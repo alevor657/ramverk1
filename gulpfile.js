@@ -1,14 +1,16 @@
+'use strict';
+
 var gulp           = require('gulp'),
     // gutil          = require('gulp-util'),
     browserSync    = require('browser-sync'),
     concat         = require('gulp-concat'),
     // uglify         = require('gulp-uglify'),
-    // cleanCSS       = require('gulp-clean-css'),
+    cleanCSS       = require('gulp-clean-css'),
     // rename         = require('gulp-rename'),
     // del            = require('del'),
     // imagemin       = require('gulp-imagemin'),
     // cache          = require('gulp-cache'),
-    // autoprefixer   = require('gulp-autoprefixer'),
+    autoprefixer   = require('gulp-autoprefixer'),
     // ftp            = require('vinyl-ftp'),
     // notify         = require("gulp-notify"),
     sass           = require('gulp-sass');
@@ -28,6 +30,11 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function () {
     return gulp.src('./static-src/**/*.sass')
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(concat('style.css'))
         .pipe(gulp.dest('./htdocs/css'))
         .pipe(browserSync.stream());
