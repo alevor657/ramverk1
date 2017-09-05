@@ -24,7 +24,7 @@ gulp.task('browser-sync', function() {
         notify: false,
         // tunnel: true,
         // tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
-        });
+    });
 });
 
 gulp.task('sass', function () {

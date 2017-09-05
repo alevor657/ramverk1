@@ -1,11 +1,11 @@
 ---
 title: "Index"
 ...
+<article class="text" markdown="1">
 
 Index
 =========================
 
-<article class="text" markdown="1">
 Hej, Jag heter Alexey och jag är 21 år gammal. Innan jag hade flyttat till Karlskrona så bodde jag med mina föräldrar i norra Stockholm, och innan dess så bodde jag i Moskva. Jag var alltid intreserad av teknik allmänt, men ännu mer av datorer och programmering.
 
 Jag tycker att det är spännande att skapa nya saker och automatisera dagliga rutiner. Jag brukar alltid vara den "händige" som fixar datorer/telefoner och så vidare. Sedan jag var en 14-åring så fick jag laga kompisars mobiler och datorer.

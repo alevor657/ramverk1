@@ -1,10 +1,10 @@
 ---
 title: "Report"
 ...
+<article class="text" markdown="1">
 Report
 =========================
 
-<article class="text" markdown="1">
 ##### kmom01 #####  
 <hr>
 ###### Gör din egen kunskapsinventering baserat på PHP The Right Way, berätta om dina styrkor och svagheter som du vill förstärka under det kommande året.
