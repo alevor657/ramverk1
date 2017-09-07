@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+// var_dump(get_defined_vars());
+// exit;
+
+?><!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -24,8 +28,10 @@
 <?php endif; ?>
 
 <?php if ($this->regionHasContent("main")) : ?>
-<div class="main-wrap container">
-    <?php $this->renderRegion("main") ?>
+<div class="main-wrap container <?= $class ?>">
+    <!-- <article class="text"> -->
+        <?php $this->renderRegion("main") ?>
+    <!-- </article> -->
 </div>
 <?php endif; ?>
 

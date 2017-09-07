@@ -1,7 +1,7 @@
 ---
 title: "Index"
+class: "index"
 ...
-<article class="text" markdown="1">
 
 Index
 =========================
@@ -12,7 +12,4 @@ Jag tycker att det är spännande att skapa nya saker och automatisera dagliga r
 
 Jag har även utvecklat 2 mindre webbplatser åt en företag, dessa kan man se här och här. Då hade jag använt mig av bootstrap, smoothscroll, ajax och ett par andra prylar. Nu så ser jag fram emot nya utmaningar och kunskaper!
 
-</article>
-<div class="centered" markdown="1">
 ![Alexey](img/me.jpg?width=200)
-</div>

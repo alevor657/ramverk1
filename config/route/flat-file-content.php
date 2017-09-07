@@ -27,8 +27,10 @@ $app->router->always(function () use ($app) {
     $content = $app->textfilter->parse($content, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"]);
 
     // Render a standard page using layout
-    $app->view->add("default1/article", [
-        "content" => $content->text
+    $app->view->add("article/article", [
+        "content" => $content->text,
+        "frontmatter" => $content->frontmatter
     ]);
+
     $app->renderPage($content->frontmatter);
 });

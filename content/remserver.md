@@ -1,4 +1,7 @@
-<article class="text" markdown="1">
+---
+title: "REM Server"
+class: "rem"
+...
 REM Server - a REST Mockup API
 ===========================================
 
@@ -175,4 +178,3 @@ Source {#source}
 -------------------------------------------
 
 The source is on GitHub in [dbwebb-se/rem-server](https://github.com/dbwebb-se/rem-server).
-</article>

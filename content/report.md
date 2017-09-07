@@ -1,12 +1,14 @@
 ---
 title: "Report"
+class: "report"
 ...
-<article class="text" markdown="1">
 Report
 =========================
 
-##### kmom01 #####  
-<hr>
+##### kmom01 #####
+
+---------------------------------------
+
 ###### Gör din egen kunskapsinventering baserat på PHP The Right Way, berätta om dina styrkor och svagheter som du vill förstärka under det kommande året.
 
 Jag har läst igenom hela PHP The Right Way sidan och det verkar som att jag har väldigt mycket att lära mig. Jag kunde fatta vad alla begrepp innebär, det kvarstående är att faktiskt öva på alla dessa saker som jag har aldrig gjort, vilket inte är lätt. Jag har absolut ingen erfarenhet i testing i PHP, eller jo, det hade vi gjort lite, men det går inte att säga att jag kan tester om jag har gjort bara en enda enhetstest, som inte var bra. Dessutom så märkte jag att koden jag producerade i oophp kursen var uppenbarligen icke testbar, så nej, jag vet ingenting om tester.
@@ -17,7 +19,6 @@ Det är mycket att göra!
 ###### Vilket blev resultatet från din mini-undersökning om vilka ramverk som för närvarande är mest populära inom PHP (ange källa var du fann informationen)?
 
 Det verkar som att att Laravel är fortfarande det mest populära ramverket inom php världen från år 2014 då Mos gjorde sin undersökning.
-</article>
 
 <figure class="figure">
   <img src="https://coderseye.com/wp-content/uploads/google-trends-best-php-frameworks-comparison.png" class="figure-img img-fluid rounded" alt="graph">
@@ -26,7 +27,6 @@ Det verkar som att att Laravel är fortfarande det mest populära ramverket inom
   </figcaption>
 </figure>
 
-<article class="text" markdown="1">
 År 2014 hade alla stora ramverk ungefär samma antal sökningar. Det intressanta är att Laravel kom upp i populäritet ganska snabbt, det ser man på det stigande kurvan. Det visade sig till slut att det är det mest populära ramverket nuförtiden.
 
 En annan intressant sak är att alla dessa kurvor går ner väldigt snabbt i slutet av grafen. Vad kan det betyda? Kan det vara så att php håller på och dö? Det får vi se. Det kan ha en anknytning till att folk börjar flytta till Python för att driva webben.
@@ -49,6 +49,7 @@ Jag håller med idén att man bör ta ett steg ifrån limma mellan olika delar a
 ###### Hur gick dina förberedelser inför kommentarssystemet?
 
 Jag tycker att det bästa sättet att komma igång med en sådant system är att modulera en databas. Så jag ser det som så:
+
 1. Det finns ett tema, tråd eller vad är det nu är, som äger sina kommentarer.
 2. Kommentarerna är kopplade till temat och ligger i en tabell, det blir one-to-many relation. En kommentar kan ha ett tema, tema har många kommentarer.
 3. Kommentar kan ha många underkommentarer som också ligger i en separat tabell. Nu tänker jag på det viset som Stackoverflow fungerar.
@@ -56,4 +57,3 @@ Jag tycker att det bästa sättet att komma igång med en sådant system är att
 5. Underkommentar är kopplat till sin förälderkommentar.
 
 Det jag kan återanvända är loginsystemet och databasmodulen, dock så ska jag bearbera koden igen så att det blir inga bekymmer och för att få tillfredsställelsen.
-</article>
