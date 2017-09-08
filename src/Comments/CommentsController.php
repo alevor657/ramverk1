@@ -5,7 +5,7 @@ namespace Anax\Comments;
 use \Anax\Common\AppInjectableInterface;
 use \Anax\Common\AppInjectableTrait;
 
-class commentsController implements AppInjectableInterface
+class CommentsController implements AppInjectableInterface
 {
     use AppInjectableTrait;
 

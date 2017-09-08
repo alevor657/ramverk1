@@ -9,7 +9,7 @@ $id = $chosenPost->idReply ?? '';
 ?>
 <div class="comments">
     <div class="card-columns pt-3">
-        <?php foreach ($data as $post): ?>
+        <?php foreach ($data as $post) : ?>
             <div class="card text-center">
                 <div class="icons-wrap">
                     <a href="<?=$app->url->create("comments/delete/{$post->idReply}")?>">
@@ -44,11 +44,11 @@ $id = $chosenPost->idReply ?? '';
             <label for="textInput">Message</label>
             <textarea class="form-control" id="textInput" rows="3" required="required" name="text"><?=$text?></textarea>
         </div>
-        <?php if ($id): ?>
+        <?php if ($id) : ?>
             <a href="<?=$app->url->create("comments/edit/")?>">
                 <button type="submit" class="btn btn-primary" name="submit" value="<?=$id ?? ''?>">Edit your comment</button>
             </a>
-        <?php else: ?>
+        <?php else : ?>
             <button type="submit" class="btn btn-primary" name="submit" value="<?=$id ?? ''?>">Add your comment</button>
         <?php endif; ?>
     </form>

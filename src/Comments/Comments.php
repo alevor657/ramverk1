@@ -122,14 +122,16 @@ class Comments
      * @return String containing either just a URL or a complete image tag
      * @source https://gravatar.com/site/implement/images/php/
      */
-    private function getGravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+    private function getGravatar($email, $sss = 80, $ddd = 'mm', $rrr = 'g', $img = false, $atts = array())
+    {
         $url = 'https://www.gravatar.com/avatar/';
-        $url .= md5( strtolower( trim( $email ) ) );
-        $url .= "?s=$s&d=$d&r=$r";
-        if ( $img ) {
+        $url .= md5(strtolower(trim($email)));
+        $url .= "?s=$sss&d=$ddd&r=$rrr";
+        if ($img) {
             $url = '<img src="' . $url . '"';
-            foreach ( $atts as $key => $val )
+            foreach ($atts as $key => $val) {
                 $url .= ' ' . $key . '="' . $val . '"';
+            }
             $url .= ' />';
         }
         return $url;
