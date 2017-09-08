@@ -28,7 +28,7 @@
 <?php endif; ?>
 
 <?php if ($this->regionHasContent("main")) : ?>
-<div class="main-wrap container <?= $class ?>">
+<div class="main-wrap container <?= $class ?? '' ?>">
     <!-- <article class="text"> -->
         <?php $this->renderRegion("main") ?>
     <!-- </article> -->

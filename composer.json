@@ -9,7 +9,8 @@
         "anax/configure": "^1.0",
         "anax/textfilter": "^1.0",
         "symfony/yaml": "^3.3",
-        "mos/cimage": "^0.7.19"
+        "mos/cimage": "^0.7.19",
+        "anax/database": "^1.1"
     },
     "autoload": {
         "psr-4": {

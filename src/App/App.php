@@ -27,6 +27,7 @@ class App
             "css/style.css"
         ];
         $data["title"] = isset($data["title"]) ? "Anax | " . $data["title"] : "Anax";
+
         $data["scripts"] = [
             "https://code.jquery.com/jquery-3.2.1.slim.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",

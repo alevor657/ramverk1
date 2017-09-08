@@ -7,6 +7,7 @@ require __DIR__ . "/route/debug.php";
 require __DIR__ . "/route/flat-file-content.php";
 
 require __DIR__ . "/route/base.php";
+require __DIR__ . "/route/comments/comments.php";
 require __DIR__ . "/route/remserver.php";
 
 // Catch all route last
