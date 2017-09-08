@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() {
         // server: {
         //     baseDir: 'htdocs'
         // },
-        proxy: '127.0.0.1:80',
+        proxy: '127.0.0.1:80/anax/htdocs/comments',
         notify: false,
         // tunnel: true,
         // tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me

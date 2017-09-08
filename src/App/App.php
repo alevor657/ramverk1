@@ -24,6 +24,7 @@ class App
     {
         $data["stylesheets"] = [
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
+            "fonts/css/font-awesome.min.css",
             "css/style.css"
         ];
         $data["title"] = isset($data["title"]) ? "Anax | " . $data["title"] : "Anax";

@@ -14,12 +14,26 @@ class Comments
     public function inject($dependency)
     {
         $this->db = $dependency["db"];
+        $this->textfilter = $dependency["textfilter"];
         return $this;
     }
 
+    /**
+     * Post a post to database
+     * @param  array  $data populated form data
+     * @return void
+     */
     public function postItem($data = [])
     {
+        if ($data["submit"]) {
+            $this->editItem($data);
+            return;
+        }
+
         $this->db->connect();
+
+        // var_dump($data);
+        // exit;
 
         $sql = "INSERT INTO
         Reply
@@ -35,6 +49,10 @@ class Comments
         $this->db->execute($sql, $params);
     }
 
+    /**
+     * Retrive all posts from database
+     * @return array posts data
+     */
     public function getItems()
     {
         $this->db->connect();
@@ -45,9 +63,51 @@ class Comments
         // Get image links
         foreach ($data as $post) {
             $post->avatarUrlReply = $this->getGravatar($post->authorReply);
+            $post->textReply = $this->textfilter->parse($post->textReply, ["markdown"])->text;
         }
 
         return $data ?? [];
+    }
+
+    public function getItem($id)
+    {
+        $this->db->connect();
+        $sql = "SELECT * FROM `Reply` WHERE idReply = ?";
+
+        $params[] = $id;
+        $data = $this->db->executeFetch($sql, $params);
+        return $data;
+    }
+
+    public function delteItem($id)
+    {
+        $this->db->connect();
+        $sql = "DELETE FROM Reply WHERE idReply=?";
+
+        $params[] = $id;
+        $this->db->execute($sql, $params);
+    }
+
+    public function editItem($data)
+    {
+        $this->db->connect();
+        $sql = "UPDATE Reply
+        SET
+            textReply = ?,
+            authorReply = ?,
+            headingReply = ?
+        WHERE
+            idReply = ?
+        ";
+
+        $params = [
+            $data["text"],
+            $data["email"],
+            $data["heading"],
+            $data["submit"]
+        ];
+
+        $this->db->execute($sql, $params);
     }
 
     /**
