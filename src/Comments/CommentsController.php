@@ -2,12 +2,12 @@
 
 namespace Anax\Comments;
 
-use \Anax\Common\AppInjectableInterface;
-use \Anax\Common\AppInjectableTrait;
+use \Anax\DI\InjectionAwareInterface;
+use \Anax\DI\InjectionAwareTrait;
 
-class CommentsController implements AppInjectableInterface
+class CommentsController implements InjectionAwareInterface
 {
-    use AppInjectableTrait;
+    use InjectionAwareTrait;
 
     public function postItem()
     {
