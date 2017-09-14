@@ -11,10 +11,21 @@ class Comments
      *
      * @return self
      */
-    public function inject($dependency)
+    public function inject($dependencies = [])
     {
-        $this->db = $dependency["db"];
-        $this->textfilter = $dependency["textfilter"];
+        if (!$dependencies) {
+            return;
+        }
+
+        foreach ($dependencies as $name => $dep) {
+            // var_dump($dep);
+            $this->{$name} = $dep;
+            // $this->{$dep} =>
+        }
+        // var_dump($this);
+        // exit;
+        // $this->db = $dependency["db"];
+        // $this->textfilter = $dependency["textfilter"];
         return $this;
     }
 

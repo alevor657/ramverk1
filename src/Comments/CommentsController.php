@@ -11,31 +11,46 @@ class CommentsController implements InjectionAwareInterface
 
     public function postItem()
     {
-        $data = $this->app->request->getPost();
-        $this->app->comments->postItem($data);
-        $this->app->redirect("comments");
+        $comments = $this->di->get("comments");
+        $request = $this->di->get("request");
+        $response = $this->di->get("response");
+
+        $data = $request->getPost();
+        $comments->postItem($data);
+        $response->redirect("comments");
     }
 
     public function getItems()
     {
-        $items = $this->app->comments->getItems();
+        $comments = $this->di->get("comments");
+        $view = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
 
-        $this->app->view->add("comments/index", ["data" => $items]);
-        $this->app->renderPage(["data" => $items]);
+        $items = $comments->getItems();
+
+        $view->add("comments/index", ["data" => $items, "test" => "CAN SEE"]);
+        $pageRender->renderPage();
     }
 
     public function deleteItem($id)
     {
-        $this->app->comments->delteItem($id);
-        $this->app->redirect("comments");
+        $comments = $this->di->get("comments");
+        $response = $this->di->get("response");
+
+        $comments->delteItem($id);
+        $response->redirect("comments");
     }
 
     public function editItem($id)
     {
-        $item = $this->app->comments->getItem($id);
-        $items = $this->app->comments->getItems();
+        $comments = $this->di->get("comments");
+        $view = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
 
-        $this->app->view->add("comments/index", ["data" => $items, "chosenPost" => $item]);
-        $this->app->renderPage(["data" => $items]);
+        $item = $comments->getItem($id);
+        $items = $comments->getItems();
+
+        $view->add("comments/index", ["data" => $items, "chosenPost" => $item]);
+        $pageRender->renderPage();
     }
 }

@@ -12,7 +12,12 @@ return [
             "file" => __DIR__ . "/route2/internal.php",
         ],
         [
-            // For debugging and development details on Anax
+            // Comments
+            "mount" => "comments/",
+            "file" => __DIR__ . "/route/comments/comments.php",
+        ],
+        [
+            // REM
             "mount" => "api/",
             "file" => __DIR__ . "/route/remserver.php",
         ],

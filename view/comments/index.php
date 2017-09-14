@@ -1,6 +1,8 @@
 <?php
-// var_dump($chosenPost);
-// exit;
+
+var_dump($test);
+var_dump($data);
+exit;
 
 $email = $chosenPost->authorReply ?? '';
 $heading = $chosenPost->headingReply ?? '';

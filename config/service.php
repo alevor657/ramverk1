@@ -35,10 +35,10 @@ $app->rem->configure("remserver.php");
 $app->rem->inject(["session" => $app->session]);
 
 // Init comments module
-$app->comments->inject([
-    "db" => $app->db,
-    "textfilter" => $app->textfilter
-]);
+// $app->comments->inject([
+//     "db" => $app->db,
+//     "textfilter" => $app->textfilter
+// ]);
 
 // Init controller for the REM Server
 $app->remController->setApp($app);

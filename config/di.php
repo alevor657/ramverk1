@@ -103,10 +103,30 @@ return [
                 return $obj;
             }
         ],
+        "database" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Anax\Database\DatabaseConfigure();
+                $obj->configure('database.php');
+                return $obj;
+            }
+        ],
+        "comments" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new Anax\Comments\Comments();
+                $obj->inject([
+                    "textfilter" => $this->get("textfilter"),
+                    "db" => $this->get("database"),
+                ]);
+                return $obj;
+            }
+        ],
         "commentsController" => [
             "shared" => true,
             "callback" => function () {
                 $obj = new Anax\Comments\CommentsController();
+                $obj->setDI($this);
                 return $obj;
             }
         ],

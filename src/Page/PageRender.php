@@ -23,7 +23,7 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
      *
      * @return void
      */
-    public function renderPage($data, $status = 200)
+    public function renderPage($data = [], $status = 200)
     {
         $data["stylesheets"] = [
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
