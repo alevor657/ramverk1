@@ -1,8 +1,5 @@
 <?php
-
-var_dump($test);
-var_dump($data);
-exit;
+namespace Anax\View;
 
 $email = $chosenPost->authorReply ?? '';
 $heading = $chosenPost->headingReply ?? '';
@@ -11,7 +8,7 @@ $id = $chosenPost->idReply ?? '';
 ?>
 <div class="comments">
     <div class="card-columns pt-3">
-        <?php foreach ($data as $post) : ?>
+        <?php foreach ($posts as $post) : ?>
             <div class="card text-center">
                 <div class="icons-wrap">
                     <a href="<?=$app->url->create("comments/delete/{$post->idReply}")?>">

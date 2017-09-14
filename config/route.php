@@ -13,7 +13,7 @@ return [
         ],
         [
             // Comments
-            "mount" => "comments/",
+            "mount" => "comments",
             "file" => __DIR__ . "/route/comments/comments.php",
         ],
         [

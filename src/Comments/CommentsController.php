@@ -17,7 +17,7 @@ class CommentsController implements InjectionAwareInterface
 
         $data = $request->getPost();
         $comments->postItem($data);
-        $response->redirect("comments");
+        $response->redirect($url->create("comments"));
     }
 
     public function getItems()
@@ -28,7 +28,7 @@ class CommentsController implements InjectionAwareInterface
 
         $items = $comments->getItems();
 
-        $view->add("comments/index", ["data" => $items, "test" => "CAN SEE"]);
+        $view->add("comments/index", ["posts" => $items, "test" => "CAN SEE"]);
         $pageRender->renderPage();
     }
 
@@ -36,9 +36,10 @@ class CommentsController implements InjectionAwareInterface
     {
         $comments = $this->di->get("comments");
         $response = $this->di->get("response");
+        $url = $this->di->get("url");
 
         $comments->delteItem($id);
-        $response->redirect("comments");
+        $response->redirect($url->create("comments"));
     }
 
     public function editItem($id)
@@ -50,7 +51,7 @@ class CommentsController implements InjectionAwareInterface
         $item = $comments->getItem($id);
         $items = $comments->getItems();
 
-        $view->add("comments/index", ["data" => $items, "chosenPost" => $item]);
+        $view->add("comments/index", ["posts" => $items, "chosenPost" => $item]);
         $pageRender->renderPage();
     }
 }

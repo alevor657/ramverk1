@@ -18,14 +18,9 @@ class Comments
         }
 
         foreach ($dependencies as $name => $dep) {
-            // var_dump($dep);
             $this->{$name} = $dep;
-            // $this->{$dep} =>
         }
-        // var_dump($this);
-        // exit;
-        // $this->db = $dependency["db"];
-        // $this->textfilter = $dependency["textfilter"];
+
         return $this;
     }
 

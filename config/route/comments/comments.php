@@ -38,13 +38,13 @@ return [
             "callable" => ["commentsController", "getItems"],
         ],
         [
-            "info" => "Get all comments",
+            "info" => "Delte a comment",
             "requestMethod" => "get",
             "path" => "delete/{id:digit}",
             "callable" => ["commentsController", "deleteItem"],
         ],
         [
-            "info" => "Get all comments",
+            "info" => "Edit a comment",
             "requestMethod" => "get",
             "path" => "edit/{id:digit}",
             "callable" => ["commentsController", "editItem"],
