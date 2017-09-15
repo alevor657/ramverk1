@@ -22,12 +22,15 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
      * @param integer $status code to use when delivering the result.
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.ExitExpression)
      */
     public function renderPage($data = [], $status = 200)
     {
         $data["stylesheets"] = [
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
             "lib/css/font-awesome.min.css",
+            // "css/remserver.css",
             "css/style.css",
         ];
 

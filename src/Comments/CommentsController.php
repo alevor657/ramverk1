@@ -14,6 +14,7 @@ class CommentsController implements InjectionAwareInterface
         $comments = $this->di->get("comments");
         $request = $this->di->get("request");
         $response = $this->di->get("response");
+        $url = $this->di->get("url");
 
         $data = $request->getPost();
         $comments->postItem($data);
