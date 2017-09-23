@@ -29,9 +29,9 @@
 
 <?php if ($this->regionHasContent("main")) : ?>
 <div class="main-wrap container <?= $class ?? '' ?>">
-    <!-- <article class="text"> -->
         <?php $this->renderRegion("main") ?>
-    <!-- </article> -->
+</div>
+<?php // HACK: Extra closing tag bellow ?>
 </div>
 <?php endif; ?>
 
