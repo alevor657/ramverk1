@@ -1,5 +1,11 @@
+<?php
+
+namespace Anax\View;
+?>
+
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="<?= $app->url->create('') ?>">Home</a>
+    <a class="navbar-brand" href="<?=url('') ?>">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,16 +14,19 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="<?= $app->url->create('report') ?>">Report <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?=url('report') ?>">Report <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= $app->url->create('about') ?>">About</a>
+                <a class="nav-link" href="<?=url('about') ?>">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= $app->url->create('remserver') ?>">Rem</a>
+                <a class="nav-link" href="<?=url('remserver') ?>">Rem</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= $app->url->create('comments') ?>">Comments</a>
+                <a class="nav-link" href="<?=url('comments') ?>">Comments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?=url('book') ?>">Book</a>
             </li>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"

@@ -11,7 +11,7 @@
 --
 -- DROP DATABASE anaxdb;
 -- CREATE DATABASE IF NOT EXISTS anaxdb;
-USE ramverk1;
+USE anaxdb;
 
 
 

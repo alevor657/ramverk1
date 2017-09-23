@@ -22,6 +22,14 @@ return [
                 return $obj;
             }
         ],
+        "bookController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Alvo\Book\BookController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
         "userController" => [
             "shared" => true,
             "callback" => function () {
@@ -117,11 +125,11 @@ return [
                 return $obj;
             }
         ],
-        "database" => [
+        "db" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Anax\Database\DatabaseConfigure();
-                $obj->configure('database.php');
+                $obj = new \Anax\Database\DatabaseQueryBuilder();
+                $obj->configure("database.php");
                 return $obj;
             }
         ],
@@ -131,7 +139,7 @@ return [
                 $obj = new Anax\Comments\Comments();
                 $obj->inject([
                     "textfilter" => $this->get("textfilter"),
-                    "db" => $this->get("database"),
+                    "db" => $this->get("db"),
                 ]);
                 return $obj;
             }

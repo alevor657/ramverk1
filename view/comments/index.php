@@ -11,10 +11,10 @@ $id = $chosenPost->idReply ?? '';
         <?php foreach ($posts as $post) : ?>
             <div class="card text-center">
                 <div class="icons-wrap">
-                    <a href="<?=$app->url->create("comments/delete/{$post->idReply}")?>">
+                    <a href="<?=url("comments/delete/{$post->idReply}")?>">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
-                    <a href="<?=$app->url->create("comments/edit/{$post->idReply}")?>">
+                    <a href="<?=url("comments/edit/{$post->idReply}")?>">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -30,7 +30,7 @@ $id = $chosenPost->idReply ?? '';
 
     <hr>
 
-    <form method="POST" action="<?=$app->url->create("comments")?>" class="mb-2">
+    <form method="POST" action="<?=url("comments")?>" class="mb-2">
         <div class="form-group">
             <label for="emailInput">Email address</label>
             <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required="required" name="email" value="<?=$email?>">
@@ -44,7 +44,7 @@ $id = $chosenPost->idReply ?? '';
             <textarea class="form-control" id="textInput" rows="3" required="required" name="text"><?=$text?></textarea>
         </div>
         <?php if ($id) : ?>
-            <a href="<?=$app->url->create("comments/edit/")?>">
+            <a href="<?=url("comments/edit/")?>">
                 <button type="submit" class="btn btn-primary" name="submit" value="<?=$id ?? ''?>">Edit your comment</button>
             </a>
         <?php else : ?>
