@@ -57,3 +57,60 @@ Jag tycker att det bästa sättet att komma igång med en sådant system är att
 5. Underkommentar är kopplat till sin förälderkommentar.
 
 Det jag kan återanvända är loginsystemet och databasmodulen, dock så ska jag bearbera koden igen så att det blir inga bekymmer och för att få tillfredsställelsen.
+
+##### kmom02 #####
+
+---------------------------------------
+
+###### Vilka tidigare erfarenheter har du av MVC? Använde du någon speciell källa för att läsa på om MVC? Kan du med egna ord förklara någon fördel med kontroller/modell-begreppet, så som du ser på det?
+
+Jag har använt flask i samband med oopython kursen, annars så har jag inte erfarenheter som inblandar designmönster.
+För att läsa mer om MVC arkitektur så använde jag de källor som fanns med i kmom. Det var väldigt spännande att titta på konferenser tycker jag. De ger en överblick av världen omkring, och det är ofta folk som är värda att lyssna på.
+Om man delar kod i en kontroller och modell som implementerar funktionaliteten då kan man byta ut modellen man använder eller dela den med andra. Detta bidrar till det som kallar en ramverkslös värld och OOP generellt. Det finns ett lager som utför arbete, och den ska ju utföra bara det den ska, inte mer eller mindre. Kontrollern behandlar request, modellen lyfter vikt liksom.
+
+###### Kom du fram till vad begreppet SOLID innebar och vilka källor använde du? Kan du förklara SOLID på ett par rader med dina egna ord?
+
+SOLID är en akronym som kom fram i slutet av nittitalet och har att göra först och främst med OOP. Den formulerar ett tankesätt som en programmerare ska hålla sig till om den skapar OOP kod. Det känns lite flummigt och oklart, men jag tror att det kommer lösas med tiden.
+
+S står för Single responsability, och det innebär att varje klass ska göra en enda sak.
+O står för Open Closed principle vilket innebär att program ska vara stängda för modifikation men tillåta extension, precis som vi gör med anax moduler.
+L är Liskov substitution principle. Den säger att objekt i programmet ska vara utbytbara mot sina subtyper utan att något i programmet går fel.
+I står för interface segregation. Den säger att interfaces ska vara så specifika som möjligt.
+D står för dependency inversion. Tanken är att beroenden ska vara en abstraktion, inte något konkret.
+
+###### Gick arbetet med REM servern bra och du lyckades integrera den i din me-sida?
+
+Det var väldigt enkelt, inga konstigheter. Artikeln var väldigt bra, som vanligt. Dessutom så fick vi ett exempel på hur strukturerar man koden.
+
+###### Berätta om arbetet med din kommentarsmodul, hur långt har du kommit och hur tänker du?
+
+Jag har valt att ta databasvägen direkt, så jag sparar inget i cookies för att jag känner att det är fel, dessutom så får jag inte göra om det sedan. Så jag kör som vanligt, anax db modulen, MySQL databas. Just nu så är det bara en tabell med allt som behövs, men det kommer ju att bli lite med avancerat med tiden.
+Just nu så har jag ett fungerande kommentarsystem som är kopplat till bluray. Jag har lyckats att strukturera kod enligt anvisningarna i en kontroller och modell, det kändes trevligt att göra det. Saker faller på sin platts nu och jag får mer uppfattning om anax arkitektur i helhet.
+
+##### kmom03 #####
+
+---------------------------------------
+
+###### Hur känns det att jobba med begreppen kring dependency injection, service locator och lazy loading?
+
+Jag hade väldigt få problem med implementationen, allt föll på sin plats. Det är smidigt att använda dependency injection och lazy loadnig, det känns trevligt när man vet att man använder best practices. Men rent kodmässigt blev det find och replace för mig.
+
+###### Hur känns det att göra dig av med beroendet till $app, blir $id bättre?
+
+Rent användarmässigt känns det lite obekvämt, först måste man lägga till alla tjänster som sta användas I variabler innan man faktiskt använder de. Det blir mer kodrader, vilket känns lite konstigt. Men annars så har jag absolut inga problem med detta, jag använder inte app där den inte ska användas.
+
+###### Hur känns det att återigen göra refaktoring på din me-sida, blir det förbättringar på kodstrukturen, eller bara annorlunda?
+
+Det känns som att det blir bara annorlunda, jag tror inte att man inte kan få en känsla av det man gör I en sån liten projekt som vi har. Sedan oopython kursen så var jag van med utseende på routern som vi hade då. Det kändes lite konstigt att bygga om till det vi fick. Det blev bara svårare att fatta för min del. På den andra sidan så vet jag att vi använder de bästa praktiken. Hoppas på att jag kommer att faktiskt få en känsla av varför det ska vara på det sättet som det är. Det är svårt att förstå fördelar med en sådan upplägg om man aldrig har haft behov av en liknande struktur. Men rent teoretiskt så fattar jag varför det är som det är.
+
+###### Lyckades du införa begreppen kring DI när du vidareutvecklade ditt kommentarssystem?
+
+Oja, absolut. Det var väldigt få ändringar för mig, det gick smärtfritt om man inte räknar med problemet att min data variabeln som jag skickade till vyn inte funkade. Men det löste sig.
+Påbörjade du arbetet (hur gick det) med databasmodellen eller avvaktar du till kommande kmom?
+
+Jag valde att avvakta för att jag redan har en databas och vill inte göra om så mycket I nästa kmom. Jag kommer att ta det steg för steg. Jag vill börja med active record direkt. Tycker att det blir mer optimalt.
+
+Allmänna kommentare kring din me-sida och dess kodstruktur?
+
+
+Nu blev det mer MVC likt tycker jag. Det finns platser där $app fortfarande används, Routern är helt ombyggd, så jag använder aldrig app, om jag inte missar något. Jag saknar lite docblockkommentarer, men det är lugnt såhär långt tycker jag. Annars så försöker jag mitt bästa att använda allting anax erbjuder, till exempel regioner. Har också fått bort html ifrån md filer. Så det blev bra, tycker jag.

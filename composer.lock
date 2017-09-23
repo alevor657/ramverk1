@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a78c967d7b48dea3b0477d74c847c0",
+    "content-hash": "a39fe06a88bf2eea3446efc0e82dd02d",
     "packages": [
         {
             "name": "anax/common",
@@ -202,6 +202,57 @@
                 "mvc"
             ],
             "time": "2017-09-11T21:00:12+00:00"
+        },
+        {
+            "name": "anax/htmlform",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/htmlform.git",
+                "reference": "3da7f93cf147a460c29512186baa7d4f9e6e80b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/htmlform/zipball/3da7f93cf147a460c29512186baa7d4f9e6e80b4",
+                "reference": "3da7f93cf147a460c29512186baa7d4f9e6e80b4",
+                "shasum": ""
+            },
+            "require": {
+                "anax/di": "^1.0",
+                "anax/request": "^1.0",
+                "anax/response": "^1.0",
+                "anax/session": "^1.0",
+                "anax/url": "^1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax htmlform module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-09-19T19:10:02+00:00"
         },
         {
             "name": "anax/page",
