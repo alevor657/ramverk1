@@ -35,6 +35,16 @@ return [
             "callback" => function () {
                 $obj = new \Alvo\User\UserController();
                 $obj->setDI($this);
+                $obj->init();
+                return $obj;
+            }
+        ],
+        "user" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Alvo\User\UserUtils();
+                $obj->setDI($this);
+                $obj->init();
                 return $obj;
             }
         ],

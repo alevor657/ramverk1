@@ -3,16 +3,22 @@
 namespace Alvo\User;
 
 use \Anax\Database\ActiveRecordModel;
+use \Anax\DI\InjectionAwareInterface;
+use \Anax\DI\InjectionAwareTrait;
 
 /**
  * A database driven model.
  */
-class User extends ActiveRecordModel
+class User extends ActiveRecordModel implements InjectionAwareInterface
 {
+    use InjectionAwareTrait;
+
+
+
     /**
      * @var string $tableName name of the database table.
      */
-    protected $tableName = "User";
+    public static $tableName = "User";
 
     /**
      * Columns in the table.
@@ -20,12 +26,13 @@ class User extends ActiveRecordModel
      * @var integer $id primary key auto incremented.
      */
     public $id;
-    public $acronym;
+    public $email;
     public $password;
     public $created;
     public $updated;
     public $deleted;
     public $active;
+    public $admin;
 
 
 
@@ -44,17 +51,17 @@ class User extends ActiveRecordModel
 
 
     /**
-     * Verify the acronym and the password, if successful the object contains
+     * Verify the email and the password, if successful the object contains
      * all details from the database row.
      *
-     * @param string $acronym  acronym to check.
+     * @param string $email  email to check.
      * @param string $password the password to use.
      *
-     * @return boolean true if acronym and password matches, else false.
+     * @return boolean true if email and password matches, else false.
      */
-    public function verifyPassword($acronym, $password)
+    public function verifyPassword($email, $password)
     {
-        $this->find("acronym", $acronym);
+        $this->find("email", $email);
         return password_verify($password, $this->password);
     }
 }

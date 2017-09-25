@@ -23,10 +23,12 @@ class UserLoginForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "User Login"
+                "class" => "center form",
+                "wrapper-element" => "div",
+                "use_fieldset" => false,
             ],
             [
-                "user" => [
+                "email" => [
                     "type"        => "text",
                     //"description" => "Here you can place a description.",
                     //"placeholder" => "Username",
@@ -41,6 +43,7 @@ class UserLoginForm extends FormModel
                 "submit" => [
                     "type" => "submit",
                     "value" => "Login",
+                    "class" => "btn btn-primary",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
@@ -57,36 +60,18 @@ class UserLoginForm extends FormModel
      */
     public function callbackSubmit()
     {
+        // $this->form->rememberValues();
+
         // Get values from the submitted form
-        $acronym       = $this->form->value("user");
+        $email         = $this->form->value("email");
         $password      = $this->form->value("password");
 
-        // Try to login
-        // $db = $this->di->get("db");
-        // $db->connect();
-        // $user = $db->select("password")
-        //            ->from("User")
-        //            ->where("acronym = ?")
-        //            ->executeFetch([$acronym]);
-        //
-        // // $user is false if user is not found
-        // if (!$user || !password_verify($password, $user->password)) {
-        //    $this->form->rememberValues();
-        //    $this->form->addOutput("User or password did not match.");
-        //    return false;
-        // }
+        $result = $this->di->get("user")->login($email, $password);
 
-        $user = new User();
-        $user->setDb($this->di->get("db"));
-        $res = $user->verifyPassword($acronym, $password);
-
-        if (!$res) {
-           $this->form->rememberValues();
-           $this->form->addOutput("User or password did not match.");
-           return false;
+        if (!$result) {
+            $this->form->addOutput("Wrong email or password");
         }
 
-        $this->form->addOutput("User " . $user->acronym . " logged in.");
-        return true;
+        return $result;
     }
 }

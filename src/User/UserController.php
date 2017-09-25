@@ -22,9 +22,14 @@ class UserController implements
 
 
     /**
-     * @var $data description
+     * Init module
      */
-    //private $data;
+    public function init()
+    {
+        $this->session = $this->di->get("session");
+        $this->response = $this->di->get("response");
+        $this->utils = new UserUtils($this->di);
+    }
 
 
 
@@ -42,12 +47,13 @@ class UserController implements
         $title      = "A index page";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
+        $user       = $this->di->get("user");
 
-        $data = [
-            "content" => "An index page",
-        ];
+        // $data = $user->getUserData();
+        // var_dump($data);
+        // exit;
 
-        $view->add("default2/article", $data);
+        $view->add("user/profile", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
@@ -68,6 +74,7 @@ class UserController implements
         $title      = "A login page";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
+        $response   = $this->di->get("response");
         $form       = new UserLoginForm($this->di);
 
         $form->check();
@@ -75,6 +82,12 @@ class UserController implements
         $data = [
             "content" => $form->getHTML(),
         ];
+
+        // var_dump($form);
+        // exit;
+        // $this->utils->login()
+
+        // $response->redirect('user');
 
         $view->add("default2/article", $data);
 
@@ -108,5 +121,30 @@ class UserController implements
         $view->add("default2/article", $data);
 
         $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getPostUpdateUser()
+    {
+
+    }
+
+
+
+    public function getPostDeleteUser()
+    {
+
+    }
+
+
+
+    public function logout()
+    {
+        $user = $this->di->get("user");
+        $response = $this->di->get("response");
+
+        $user->logout();
+        $response->redirect("user/login");
     }
 }

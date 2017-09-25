@@ -28,6 +28,7 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
         $data["stylesheets"] = [
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
             "lib/css/font-awesome.min.css",
+            "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css",
             "css/style.css",
         ];
 
@@ -37,11 +38,14 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
             "https://code.jquery.com/jquery-3.2.1.slim.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js",
         ];
 
         // Add common header, navbar and footer
         // $this->view->add("common/header", [], "header");
         $view = $this->di->get("view");
+        $user = $this->di->get("user");
+
         $view->add("common/navbar", [], "navbar");
         $view->add("common/footer", [], "footer");
 

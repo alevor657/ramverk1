@@ -16,7 +16,7 @@ $items = isset($items) ? $items : null;
 $urlToCreate = url("book/create");
 $urlToDelete = url("book/delete");
 
-// BUG: 
+// BUG:
 
 ?><div class="center">
     <h1>View all items</h1>
@@ -44,8 +44,8 @@ $urlToDelete = url("book/delete");
             <td>
                 <a href="<?= url("book/update/{$item->id}"); ?>"><?= $item->id ?></a>
             </td>
-            <td><?= $item->column1 ?></td>
-            <td><?= $item->column2 ?></td>
+            <td><?= $item->title ?></td>
+            <td><?= $item->author ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

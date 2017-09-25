@@ -24,10 +24,26 @@ class CreateUserForm extends FormModel
         [
             "id" => __CLASS__,
             "legend" => "Create user",
+            "class" => "center form",
+            "wrapper-element" => "div",
+            "use_fieldset" => false,
+            // "br-after-label" => false,
         ],
         [
-            "acronym" => [
-                "type"        => "text",
+            "email" => [
+                "type"        => "email",
+                "validation" => [
+                    "custom_test" => [
+                        "message" => "User with this email is already registered",
+                        "test" => function ($email)
+                        {
+                            $user = new User();
+                            $user->setDb($this->di->get("db"));
+                            $check = $user->find('email', $email);
+                            return !$check;
+                        }
+                    ]
+                ]
             ],
 
             "password" => [
@@ -44,7 +60,8 @@ class CreateUserForm extends FormModel
             "submit" => [
                 "type" => "submit",
                 "value" => "Create user",
-                "callback" => [$this, "callbackSubmit"]
+                "callback" => [$this, "callbackSubmit"],
+                "class" => "btn btn-success"
             ],
         ]
     );
@@ -61,7 +78,7 @@ class CreateUserForm extends FormModel
     public function callbackSubmit()
     {
         // Get values from the submitted form
-        $acronym       = $this->form->value("acronym");
+        $email         = $this->form->value("email");
         $password      = $this->form->value("password");
         $passwordAgain = $this->form->value("password-again");
 
@@ -76,15 +93,16 @@ class CreateUserForm extends FormModel
         // $db = $this->di->get("db");
         // $password = password_hash($password, PASSWORD_DEFAULT);
         // $db->connect()
-        //    ->insert("User", ["acronym", "password"])
-        //    ->execute([$acronym, $password]);
+        //    ->insert("User", ["email", "password"])
+        //    ->execute([$email, $password]);
         $user = new User();
         $user->setDb($this->di->get("db"));
-        $user->acronym = $acronym;
+        $user->email = $email;
         $user->setPassword($password);
         $user->save();
 
-        $this->form->addOutput("User was created.");
+        $this->form->addOutput("User was created.", "test");
+
         return true;
     }
 }
