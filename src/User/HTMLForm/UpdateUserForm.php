@@ -9,7 +9,7 @@ use \Alvo\User\User;
 /**
  * Example of FormModel implementation.
  */
-class CreateUserForm extends FormModel
+class UpdateUserForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
@@ -19,11 +19,12 @@ class CreateUserForm extends FormModel
     public function __construct(DIInterface $di)
     {
         parent::__construct($di);
+        $this->user = $this->loadUserData($di->get('session')->get('userId'));
+        $this->di = $di;
 
         $this->form->create(
         [
             "id" => __CLASS__,
-            "legend" => "Create user",
             "class" => "center form",
             "wrapper-element" => "div",
             "use_fieldset" => false,
@@ -31,15 +32,14 @@ class CreateUserForm extends FormModel
         ],
         [
             "email" => [
-                "type"        => "email",
+                "type" => "email",
+                "value" => esc($this->user->email),
                 "validation" => [
                     "custom_test" => [
                         "message" => "User with this email is already registered",
                         "test" => function ($email)
                         {
-                            $user = new User();
-                            $user->setDb($this->di->get("db"));
-                            $check = $user->find('email', $email);
+                            $check = $this->user->getUser('email', $email);
                             return !$check;
                         }
                     ],
@@ -63,12 +63,22 @@ class CreateUserForm extends FormModel
 
             "submit" => [
                 "type" => "submit",
-                "value" => "Create user",
+                "value" => "Update User",
                 "callback" => [$this, "callbackSubmit"],
-                "class" => "btn btn-success"
+                "class" => "btn btn-warning"
             ],
         ]
     );
+    }
+
+
+
+    public function loadUserData($id)
+    {
+        $user = new User();
+        $user->setDb($this->di->get("db"));
+        $user->find("id", $id);
+        return $user;
     }
 
 
@@ -95,12 +105,15 @@ class CreateUserForm extends FormModel
 
         $user = new User();
         $user->setDb($this->di->get("db"));
+        $user->find("id", $this->di->get("session")->get("userId"));
         $user->email = $email;
         $user->setPassword($password);
-        $user->created = date("Y-m-d H:i:s");
+        $user->updated = date("Y-m-d H:i:s");
         $user->save();
 
-        $this->form->addOutput("User was created.");
+        $this->di->get("user")->logout();
+
+        $this->form->addOutput("Profile has been updated.");
 
         return true;
     }

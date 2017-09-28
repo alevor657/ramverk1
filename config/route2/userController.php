@@ -5,8 +5,8 @@
 return [
     "routes" => [
         [
-            "info" => "User Controller index.",
-            "requestMethod" => "get",
+            "info" => "User Profile.",
+            "requestMethod" => "get|post",
             "path" => "",
             "callable" => ["userController", "getIndex"],
         ],

@@ -19,7 +19,10 @@
         "psr-4": {
             "Anax\\": "src/",
             "Alvo\\": "src/"
-        }
+        },
+        "files": [
+            "config/functions.php"
+        ]
     },
     "name": "alvo16/anax",
     "description": "My variation using anax framework",

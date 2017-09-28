@@ -2,27 +2,20 @@
 
 namespace Alvo\User;
 
-use \Anax\DI\InjectionAwareInterface;
-use \Anax\Di\InjectionAwareTrait;
+
 
 /**
  *  Utils functions
  */
-class UserUtils implements InjectionAwareInterface
+trait UserUtils
 {
-    use InjectionAwareTrait;
-
-
-
     /**
-     * Init the module
-     *
-     * @return void
+     * Checks if user is logged in
+     * @return boolean false if not logged in
      */
-    public function init()
+    public function isLoggedIn()
     {
-        $this->session = $this->di->get("session");
-        $this->db = $this->di->get("db");
+        return $this->di->get("session")->has('user');
     }
 
 
@@ -37,6 +30,10 @@ class UserUtils implements InjectionAwareInterface
      */
     public function login($email, $pass)
     {
+        if ($this->isLoggedIn()) {
+            return;
+        }
+
         $user = $this->db
             ->connect()
             ->select("email, id, password")
@@ -52,26 +49,24 @@ class UserUtils implements InjectionAwareInterface
         $passCheck = password_verify($pass, $user->password);
 
         if ($passCheck) {
-            $this->session->set("user", $user->email);
-            $this->session->set("userId", $user->id);
+            $this->di->get("session")->set("user", $user->email);
+            $this->di->get("session")->set("userId", $user->id);
             return true;
         }
 
+        // var_dump($this->di->get("session")->get("user"));
         return false;
     }
 
 
 
+    /**
+     * Destroys the session
+     * @return void
+     */
     public function logout()
     {
-
-    }
-
-
-
-    public function register()
-    {
-
+        $this->di->get("session")->destroy();
     }
 
 

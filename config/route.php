@@ -14,7 +14,7 @@ return [
         [
             // Comments
             "mount" => "comments",
-            "file" => __DIR__ . "/route/comments/comments.php",
+            "file" => __DIR__ . "/route2/commentsController.php",
         ],
         [
             // Add routes from bookController and mount on book/

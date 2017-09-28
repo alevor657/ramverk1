@@ -1,5 +1,3 @@
-'use strict';
-
 var gulp           = require('gulp'),
     // gutil          = require('gulp-util'),
     browserSync    = require('browser-sync'),
@@ -15,6 +13,8 @@ var gulp           = require('gulp'),
     // notify         = require("gulp-notify"),
     sass           = require('gulp-sass');
 
+var static = ['./static-src/**/*.sass', './static-src/**/*.css'];
+
 gulp.task('browser-sync', function() {
     browserSync({
         // server: {
@@ -28,7 +28,7 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('./static-src/**/*.sass')
+    return gulp.src(static)
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -41,7 +41,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', ['sass', 'browser-sync'], function() {
-    gulp.watch('static-src/**/*.sass', ['sass']);
+    gulp.watch(static, ['sass']);
     gulp.watch('src/**/*.php', browserSync.reload);
 });
 

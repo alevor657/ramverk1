@@ -43,7 +43,7 @@ namespace Anax\View;
     <?php if ($user): ?>
         <ul class="user-label navbar-nav ml-auto right">
             <li class="nav-item text-warning">
-                <a class="nav-link font-weight-bold" href="#">Logged in as: <?=$user?></a>
+                <a class="nav-link font-weight-bold" href="<?=url("user")?>">Logged in as: <?=$user?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-warning font-weight-bold" href="<?=url("user/logout")?>">Logout</a>

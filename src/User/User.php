@@ -12,13 +12,14 @@ use \Anax\DI\InjectionAwareTrait;
 class User extends ActiveRecordModel implements InjectionAwareInterface
 {
     use InjectionAwareTrait;
+    use UserUtils;
 
 
 
     /**
      * @var string $tableName name of the database table.
      */
-    public static $tableName = "User";
+    protected $tableName = "User";
 
     /**
      * Columns in the table.
@@ -63,5 +64,57 @@ class User extends ActiveRecordModel implements InjectionAwareInterface
     {
         $this->find("email", $email);
         return password_verify($password, $this->password);
+    }
+
+
+
+    public function getUser($column = null, $param = null)
+    {
+        if (!$column) {
+            $column = "id";
+        }
+
+        if (!$param) {
+            $param = $this->di->get("session")->get("userId");
+        }
+
+        return $this->find($column, $param);
+    }
+
+
+
+    public function isAdmin()
+    {
+        return $this->admin();
+    }
+
+
+
+    /**
+     * Get either a Gravatar URL or complete image tag for a specified email address.
+     *
+     * @param string $email The email address
+     * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
+     * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
+     * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
+     * @param boole $img True to return a complete IMG tag False for just the URL
+     * @param array $atts Optional, additional key/value attributes to include in the IMG tag
+     * @return String containing either just a URL or a complete image tag
+     * @source https://gravatar.com/site/implement/images/php/
+     */
+    public function getGravatar($email = null, $sss = 80, $ddd = 'mm', $rrr = 'g', $img = false, $atts = array())
+    {
+        $email = $email ?? $this->email;
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5(strtolower(trim($email)));
+        $url .= "?s=$sss&d=$ddd&r=$rrr";
+        if ($img) {
+            $url = '<img src="' . $url . '"';
+            foreach ($atts as $key => $val) {
+                $url .= ' ' . $key . '="' . $val . '"';
+            }
+            $url .= ' />';
+        }
+        return $url;
     }
 }

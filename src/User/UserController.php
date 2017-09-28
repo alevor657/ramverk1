@@ -8,16 +8,14 @@ use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Alvo\User\HTMLForm\UserLoginForm;
 use \Alvo\User\HTMLForm\CreateUserForm;
+use \Alvo\User\HTMLForm\UpdateUserForm;
 
 /**
  * A controller class.
  */
-class UserController implements
-    ConfigureInterface,
-    InjectionAwareInterface
+class UserController implements InjectionAwareInterface
 {
-    use ConfigureTrait,
-        InjectionAwareTrait;
+    use InjectionAwareTrait;
 
 
 
@@ -28,7 +26,9 @@ class UserController implements
     {
         $this->session = $this->di->get("session");
         $this->response = $this->di->get("response");
-        $this->utils = new UserUtils($this->di);
+        $this->user = $this->di->get("user");
+        $this->view = $this->di->get("view");
+        $this->pageRender = $this->di->get("pageRender");
     }
 
 
@@ -44,18 +44,20 @@ class UserController implements
      */
     public function getIndex()
     {
-        $title      = "A index page";
-        $view       = $this->di->get("view");
-        $pageRender = $this->di->get("pageRender");
-        $user       = $this->di->get("user");
+        if (!$this->user->isLoggedIn()) {
+            $this->response->redirect('user/login');
+        }
 
-        // $data = $user->getUserData();
-        // var_dump($data);
-        // exit;
+        $title = "Profile";
 
-        $view->add("user/profile", $data);
+        $data = $this->user->getUser('email', $this->session->get('user'));
 
-        $pageRender->renderPage(["title" => $title]);
+        $form = new UpdateUserForm($this->di);
+        $form->check();
+
+        $this->view->add("user/profile", ["user" => $data, "form" => $form->getHTML()]);
+
+        $this->pageRender->renderPage(["title" => $title]);
     }
 
 
@@ -71,6 +73,10 @@ class UserController implements
      */
     public function getPostLogin()
     {
+        if ($this->user->isLoggedIn()) {
+            $this->response->redirect("user");
+        }
+
         $title      = "A login page";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
@@ -125,13 +131,6 @@ class UserController implements
 
 
 
-    public function getPostUpdateUser()
-    {
-
-    }
-
-
-
     public function getPostDeleteUser()
     {
 
@@ -141,10 +140,7 @@ class UserController implements
 
     public function logout()
     {
-        $user = $this->di->get("user");
-        $response = $this->di->get("response");
-
-        $user->logout();
-        $response->redirect("user/login");
+        $this->user->logout();
+        $this->response->redirect("user/login");
     }
 }

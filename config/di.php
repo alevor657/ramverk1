@@ -42,9 +42,9 @@ return [
         "user" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Alvo\User\UserUtils();
+                $obj = new \Alvo\User\User();
                 $obj->setDI($this);
-                $obj->init();
+                $obj->setDb($this->get("db"));
                 return $obj;
             }
         ],
@@ -143,25 +143,23 @@ return [
                 return $obj;
             }
         ],
-        "comments" => [
+        "comment" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new Anax\Comments\Comments();
-                $obj->inject([
-                    "textfilter" => $this->get("textfilter"),
-                    "db" => $this->get("db"),
-                ]);
-                return $obj;
-            }
-        ],
-        "commentsController" => [
-            "shared" => true,
-            "callback" => function () {
-                $obj = new Anax\Comments\CommentsController();
+                $obj = new Alvo\Comment\CommentController();
                 $obj->setDI($this);
+                $obj->init();
                 return $obj;
             }
         ],
+        // "commentController" => [
+        //     "shared" => true,
+        //     "callback" => function () {
+        //         $obj = new Alvo\Comments\CommentController();
+        //         $obj->setDI($this);
+        //         return $obj;
+        //     }
+        // ],
         "rem" => [
             "shared" => true,
             "callback" => function () {
