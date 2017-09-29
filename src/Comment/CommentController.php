@@ -94,7 +94,6 @@ class CommentController implements InjectionAwareInterface
 
 
 // TODO:
-// Defend routes
 // Show whos post is
 //
 // ...

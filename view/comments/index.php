@@ -1,9 +1,5 @@
 <?php
 namespace Anax\View;
-
-// $form
-// $posts
-// $user
 ?>
 
 <div class="container">
@@ -18,7 +14,7 @@ namespace Anax\View;
                 <div class="card card-body blog-post">
                     <div class="card-header blog-post-header">
                         <a class="h2 card-title blog-post-title" href="#"><?=esc($post->heading)?></a>
-                        <p class="blog-post-meta"><?=esc($post->created)?></p>
+                        <p class="blog-post-meta"><?=esc($post->created)?> by <?=esc($post->email)?></p>
 
                         <?php $tags = explode(" ", $post->tags); ?>
                         <?php foreach ($tags as $tag): ?>

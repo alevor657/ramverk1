@@ -22,7 +22,8 @@ class EditCommentForm extends FormModel
 
         $comment = new Comment();
         $comment->setDb($di->get("db"));
-        $this->comment = $comment->getComment($id);
+        $this->comment = $comment->getComment(null, $id);
+        // debug($id);
 
         $this->form->create(
         [

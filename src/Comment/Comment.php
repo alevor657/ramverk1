@@ -30,17 +30,44 @@ class Comment extends ActiveRecordModel
     public function getAllComments()
     {
         return $this->db->connect()
-                    ->select()
+                    ->select("
+                        Comment.id,
+                        Comment.text,
+                        Comment.heading,
+                        Comment.created,
+                        Comment.tags,
+                        Comment.userId,
+                        User.email
+                    ")
                     ->from($this->tableName)
-                    ->where("deleted IS NULL")
+                    ->where("Comment.deleted IS NULL")
+                    ->join("User", "User.id = Comment.userId")
+                    // ->getSQL();
                     ->execute()
                     ->fetchAllClass(get_class($this));
+
+        // debug($t);
+        // return $this->db->connect()
+        //             ->select()
+        //             ->from($this->tableName)
+        //             ->where("deleted IS NULL")
+        //             ->execute()
+        //             ->fetchAllClass(get_class($this));
     }
 
 
 
-    public function getComment($id)
+    public function getComment($col = null, $val = null)
     {
-        return $this->find("id", $id);
+        // debug($col);
+        if (!$col) {
+            $col = "id";
+        }
+
+        if (!$val) {
+            throw new \Exception("CUSTOM ERR | No value provided to get a comment");
+        }
+
+        return $this->find($col, $val);
     }
 }

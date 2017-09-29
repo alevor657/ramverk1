@@ -32,7 +32,6 @@ class User extends ActiveRecordModel implements InjectionAwareInterface
     public $created;
     public $updated;
     public $deleted;
-    public $active;
     public $admin;
 
 

@@ -35,14 +35,14 @@ class UpdateUserForm extends FormModel
                 "type" => "email",
                 "value" => esc($this->user->email),
                 "validation" => [
-                    "custom_test" => [
-                        "message" => "User with this email is already registered",
-                        "test" => function ($email)
-                        {
-                            $check = $this->user->getUser('email', $email);
-                            return !$check;
-                        }
-                    ],
+                //     "custom_test" => [
+                //         "message" => "User with this email is already registered",
+                //         "test" => function ($email)
+                //         {
+                //             $check = $this->user->getUser('email', $email);
+                //             return !$check;
+                //         }
+                //     ],
                     "not_empty"
                 ]
             ],
