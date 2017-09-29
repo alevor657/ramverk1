@@ -40,7 +40,7 @@ return [
             }
         ],
         "user" => [
-            "shared" => true,
+            "shared" => false,
             "callback" => function () {
                 $obj = new \Alvo\User\User();
                 $obj->setDI($this);

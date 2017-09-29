@@ -3,6 +3,12 @@
 return [
     "routes" => [
         [
+            "info" => "Check user",
+            "requestMethod" => "get|post",
+            "path" => "**",
+            "callable" => ["comment", "loginRequired"],
+        ],
+        [
             "info" => "Get all comments",
             "requestMethod" => "get|post",
             "path" => null,
