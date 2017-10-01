@@ -82,9 +82,15 @@ class User extends ActiveRecordModel implements InjectionAwareInterface
 
 
 
-    public function isAdmin()
+    public function getAllUsers()
     {
-        return $this->admin();
+        return $this->db
+            ->connect()
+            ->select()
+            ->from($this->tableName)
+            ->where("deleted is NULL")
+            ->execute()
+            ->fetchAllClass(get_class($this));
     }
 
 

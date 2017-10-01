@@ -17,6 +17,10 @@ return [
             "file" => __DIR__ . "/route2/commentsController.php",
         ],
         [
+            "mount" => "admin",
+            "file" => __DIR__ . "/route2/admin.php",
+        ],
+        [
             // Add routes from bookController and mount on book/
             "mount" => "book",
             "file" => __DIR__ . "/route/bookController.php",

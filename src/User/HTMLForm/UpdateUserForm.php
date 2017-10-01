@@ -16,10 +16,14 @@ class UpdateUserForm extends FormModel
      *
      * @param Anax\DI\DIInterface $di a service container
      */
-    public function __construct(DIInterface $di)
+    public function __construct(DIInterface $di, $user = null)
     {
         parent::__construct($di);
-        $this->user = $this->loadUserData($di->get('session')->get('userId'));
+
+        $this->user = $user;
+        if (!$this->user) {
+            $this->user = $this->loadUserData($di->get('session')->get('userId'));
+        }
         $this->di = $di;
 
         $this->form->create(
@@ -105,13 +109,15 @@ class UpdateUserForm extends FormModel
 
         $user = new User();
         $user->setDb($this->di->get("db"));
-        $user->find("id", $this->di->get("session")->get("userId"));
+        $user->find("id", $this->user->id);
         $user->email = $email;
         $user->setPassword($password);
         $user->updated = date("Y-m-d H:i:s");
         $user->save();
 
-        $this->di->get("user")->logout();
+        // $this->di->get("user")->logout();
+        // $t = $this->di->get("user")->login($email, $password);
+        // debug($t);
 
         $this->form->addOutput("Profile has been updated.");
 

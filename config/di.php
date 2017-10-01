@@ -152,14 +152,15 @@ return [
                 return $obj;
             }
         ],
-        // "commentController" => [
-        //     "shared" => true,
-        //     "callback" => function () {
-        //         $obj = new Alvo\Comments\CommentController();
-        //         $obj->setDI($this);
-        //         return $obj;
-        //     }
-        // ],
+        "admin" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new Alvo\User\AdminController();
+                $obj->setDI($this);
+                $obj->init();
+                return $obj;
+            }
+        ],
         "rem" => [
             "shared" => true,
             "callback" => function () {

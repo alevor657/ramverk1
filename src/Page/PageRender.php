@@ -44,7 +44,8 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
         // Add common header, navbar and footer
         // $this->view->add("common/header", [], "header");
         $view = $this->di->get("view");
-        $user = $this->di->get("session")->get('user', null);
+        // $user = $this->di->get("session")->get('user', null);
+        $user = $this->di->get("user")->getUser();
         $userId = $this->di->get("session")->get('userId', null);
 
         $view->add("common/navbar", ["user" => $user, "userId" => $userId], "navbar");

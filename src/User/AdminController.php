@@ -6,14 +6,14 @@ use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
-use \Alvo\User\HTMLForm\UserLoginForm;
-use \Alvo\User\HTMLForm\CreateUserForm;
+// use \Alvo\User\HTMLForm\UserLoginForm;
+// use \Alvo\User\HTMLForm\CreateUserForm;
 use \Alvo\User\HTMLForm\UpdateUserForm;
 
 /**
  * A controller class.
  */
-class UserController implements InjectionAwareInterface
+class AdminController implements InjectionAwareInterface
 {
     use InjectionAwareTrait;
 
@@ -33,34 +33,12 @@ class UserController implements InjectionAwareInterface
 
 
 
-    /**
-     * Description.
-     *
-     * @param datatype $variable Description
-     *
-     * @throws Exception
-     *
-     * @return void
-     */
-    public function getIndex()
+    public function isAdmin()
     {
-        if (!$this->user->isLoggedIn()) {
-            $this->response->redirect('user/login');
+        $admin = $this->user->getUser()->admin;
+        if (!$admin) {
+            $this->response->redirect("user");
         }
-
-        $title = "Profile";
-
-        $form = new UpdateUserForm($this->di);
-        $form->check();
-
-        $user = $this->user->find("id", $this->session->get("userId"));
-        // debug($user);
-
-        $data = $this->user->getUser('email', $user->email);
-
-        $this->view->add("user/profile", ["user" => $data, "form" => $form->getHTML()]);
-
-        $this->pageRender->renderPage(["title" => $title]);
     }
 
 
@@ -74,33 +52,32 @@ class UserController implements InjectionAwareInterface
      *
      * @return void
      */
-    public function getPostLogin()
+    public function getIndex()
     {
-        if ($this->user->isLoggedIn()) {
-            $this->response->redirect("user");
-        }
+        $title = "Admin | All users";
 
-        $title      = "A login page";
-        $view       = $this->di->get("view");
-        $pageRender = $this->di->get("pageRender");
-        $response   = $this->di->get("response");
-        $form       = new UserLoginForm($this->di);
+        $data = $this->user->getAllUsers('email', $this->session->get('user')) ?: [];
 
+        $this->view->add("admin/index", ["users" => $data]);
+        $this->pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function editUser($id)
+    {
+        $title = "Admin | Edit user";
+
+        $user = $this->user->getUser("id", $id);
+
+        $form = new UpdateUserForm($this->di, $user);
         $form->check();
 
-        $data = [
-            "content" => $form->getHTML(),
-        ];
+        $data = $this->user->getUser('id', $id);
 
-        // var_dump($form);
-        // exit;
-        // $this->utils->login()
+        $this->view->add("user/profile", ["user" => $data, "form" => $form->getHTML()]);
 
-        // $response->redirect('user');
-
-        $view->add("default2/article", $data);
-
-        $pageRender->renderPage(["title" => $title]);
+        $this->pageRender->renderPage(["title" => $title]);
     }
 
 
@@ -130,6 +107,13 @@ class UserController implements InjectionAwareInterface
         $view->add("default2/article", $data);
 
         $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getPostDeleteUser()
+    {
+
     }
 
 

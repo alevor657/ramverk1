@@ -1,6 +1,9 @@
 <?php
 
 namespace Anax\View;
+// echo showEnvironment(get_defined_vars());
+// debug($user);
+// exit;
 ?>
 
 
@@ -37,13 +40,18 @@ namespace Anax\View;
             <li class="nav-item">
                 <a class="nav-link" href="<?=url('book') ?>">Book</a>
             </li>
+            <?php if ($user->admin ?? false): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=url('admin') ?>">Admin</a>
+                </li>
+            <?php endif; ?>
 
         </ul>
 
     <?php if ($user): ?>
         <ul class="user-label navbar-nav ml-auto right">
             <li class="nav-item text-warning">
-                <a class="nav-link font-weight-bold" href="<?=url("user")?>">Logged in as: <?=$user?></a>
+                <a class="nav-link font-weight-bold" href="<?=url("user")?>">Logged in as: <?=$user->email?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-warning font-weight-bold" href="<?=url("user/logout")?>">Logout</a>

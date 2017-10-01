@@ -83,18 +83,15 @@ class CommentController implements InjectionAwareInterface
         $this->response->redirect("comments");
     }
 
-    public function loginRequired()
-    {
-        $user = $this->di->get("user");
-        if (!$user->isLoggedIn()) {
-            $this->response->redirect("user/login");
-        }
-    }
+    // public function loginRequired()
+    // {
+        // $user = $this->di->get("user");
+        // if (!$user->isLoggedIn()) {
+        //     $this->response->redirect("user/login");
+        // }
+    // }
 }
 
 
 // TODO:
-// Show whos post is
-//
-// ...
 // Users CRUD
