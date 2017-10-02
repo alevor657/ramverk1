@@ -23,14 +23,14 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
      *
      * @return void
      *
-     * @SuppressWarnings(PHPMD.ExitExpression)
+     * @SuppressWarnings("exit")
      */
     public function renderPage($data = [], $status = 200)
     {
         $data["stylesheets"] = [
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
             "lib/css/font-awesome.min.css",
-            // "css/remserver.css",
+            "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css",
             "css/style.css",
         ];
 
@@ -40,12 +40,17 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
             "https://code.jquery.com/jquery-3.2.1.slim.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js",
         ];
 
         // Add common header, navbar and footer
         // $this->view->add("common/header", [], "header");
         $view = $this->di->get("view");
-        $view->add("common/navbar", [], "navbar");
+        // $user = $this->di->get("session")->get('user', null);
+        $user = $this->di->get("user")->getUser();
+        $userId = $this->di->get("session")->get('userId', null);
+
+        $view->add("common/navbar", ["user" => $user, "userId" => $userId], "navbar");
         $view->add("common/footer", [], "footer");
 
         // Add layout, render it, add to response and send.

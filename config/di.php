@@ -16,7 +16,37 @@ return [
         ],
         "response" => [
             "shared" => true,
-            "callback" => "\Anax\Response\Response",
+            "callback" => function () {
+                $obj = new \Anax\Response\ResponseUtility();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
+        "bookController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Alvo\Book\BookController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
+        "userController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Alvo\User\UserController();
+                $obj->setDI($this);
+                $obj->init();
+                return $obj;
+            }
+        ],
+        "user" => [
+            "shared" => false,
+            "callback" => function () {
+                $obj = new \Alvo\User\User();
+                $obj->setDI($this);
+                $obj->setDb($this->get("db"));
+                return $obj;
+            }
         ],
         "url" => [
             "shared" => true,
@@ -61,9 +91,11 @@ return [
         ],
         "session" => [
             "shared" => true,
+            "active" => true,
             "callback" => function () {
                 $session = new \Anax\Session\SessionConfigurable();
                 $session->configure("session.php");
+                $session->start();
                 return $session;
             }
         ],
@@ -103,30 +135,29 @@ return [
                 return $obj;
             }
         ],
-        "database" => [
+        "db" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Anax\Database\DatabaseConfigure();
-                $obj->configure('database.php');
+                $obj = new \Anax\Database\DatabaseQueryBuilder();
+                $obj->configure("database.php");
                 return $obj;
             }
         ],
-        "comments" => [
+        "comment" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new Anax\Comments\Comments();
-                $obj->inject([
-                    "textfilter" => $this->get("textfilter"),
-                    "db" => $this->get("database"),
-                ]);
-                return $obj;
-            }
-        ],
-        "commentsController" => [
-            "shared" => true,
-            "callback" => function () {
-                $obj = new Anax\Comments\CommentsController();
+                $obj = new Alvo\Comment\CommentController();
                 $obj->setDI($this);
+                $obj->init();
+                return $obj;
+            }
+        ],
+        "admin" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new Alvo\User\AdminController();
+                $obj->setDI($this);
+                $obj->init();
                 return $obj;
             }
         ],
