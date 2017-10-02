@@ -76,51 +76,14 @@ class AdminController implements InjectionAwareInterface
         $data = $this->user->getUser('id', $id);
 
         $this->view->add("user/profile", ["user" => $data, "form" => $form->getHTML()]);
-
         $this->pageRender->renderPage(["title" => $title]);
     }
 
 
 
-    /**
-     * Description.
-     *
-     * @param datatype $variable Description
-     *
-     * @throws Exception
-     *
-     * @return void
-     */
-    public function getPostCreateUser()
+    public function deleteUser($id)
     {
-        $title      = "A create user page";
-        $view       = $this->di->get("view");
-        $pageRender = $this->di->get("pageRender");
-        $form       = new CreateUserForm($this->di);
-
-        $form->check();
-
-        $data = [
-            "content" => $form->getHTML(),
-        ];
-
-        $view->add("default2/article", $data);
-
-        $pageRender->renderPage(["title" => $title]);
-    }
-
-
-
-    public function getPostDeleteUser()
-    {
-
-    }
-
-
-
-    public function logout()
-    {
-        $this->user->logout();
-        $this->response->redirect("user/login");
+        $this->user->delete($id);
+        $this->response->redirect("admin");
     }
 }

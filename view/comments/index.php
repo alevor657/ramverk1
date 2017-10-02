@@ -1,5 +1,6 @@
 <?php
 namespace Anax\View;
+
 ?>
 
 <div class="container">
@@ -7,7 +8,7 @@ namespace Anax\View;
         <!-- main -->
         <div class="col-md-12">
 
-            <?php foreach ($posts as $post): ?>
+            <?php foreach ($posts as $post) : ?>
                 <?php
                 $enableOptions = $user && ($user->id == $post->userId || $user->admin);
                 ?>
@@ -17,13 +18,13 @@ namespace Anax\View;
                         <p class="blog-post-meta"><?=esc($post->created)?> by <?=esc($post->email)?></p>
 
                         <?php $tags = explode(" ", $post->tags); ?>
-                        <?php foreach ($tags as $tag): ?>
+                        <?php foreach ($tags as $tag) : ?>
                             <span class="badge badge-primary"><?=esc($tag)?></span>
 
 
                         <?php endforeach; ?>
 
-                        <?php if ($enableOptions): ?>
+                        <?php if ($enableOptions) : ?>
                             <div class="options">
                                 <a href="<?=url("comments/edit/$post->id")?>" class="btn btn-warning btn-sm">
                                     Edit
@@ -41,13 +42,13 @@ namespace Anax\View;
             <?php endforeach; ?>
 
 
-            <?php if ($user): ?>
+            <?php if ($user) : ?>
                 <hr>
 
                 <div class="container">
                     <?=$form?>
                 </div>
-            <?php else: ?>
+            <?php else : ?>
                 <p>Log in to leave a comment</p>
             <?php endif; ?>
 

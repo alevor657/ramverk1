@@ -30,7 +30,7 @@ $urlToDelete = url("book/delete");
         <p>There are no items to show.</p>
     <?php
         return;
-    endif;
+endif;
     ?>
 
     <table>

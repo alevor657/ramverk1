@@ -2,8 +2,6 @@
 
 namespace Alvo\User;
 
-
-
 /**
  *  Utils functions
  */

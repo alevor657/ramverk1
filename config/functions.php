@@ -4,6 +4,9 @@ function esc($var)
     return htmlentities($var);
 }
 
+/**
+ * @SuppressWarnings("PHPMD")
+ */
 function debug($var)
 {
     echo "<pre>";

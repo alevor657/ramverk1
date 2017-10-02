@@ -5,7 +5,7 @@ namespace Anax\View;
 ?>
 <div class="center all-users m-t-lg">
 
-<?php foreach ($users as $user): ?>
+<?php foreach ($users as $user) : ?>
         <div class="card text-center">
             <img class="card-img-top" src="<?=$user->getGravatar()?>" alt="Avatar">
             <div class="card-body">

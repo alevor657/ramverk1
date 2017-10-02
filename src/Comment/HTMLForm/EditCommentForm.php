@@ -26,49 +26,49 @@ class EditCommentForm extends FormModel
         // debug($id);
 
         $this->form->create(
-        [
-            "id" => __CLASS__,
-            "class" => "mb-2",
-            "wrapper-element" => "div",
-            "use_fieldset" => false,
-        ],
-        [
-            "heading" => [
-                "type" => "text",
-                "class" => "form-control",
-                "value" => $comment->heading,
-                "validation" => [
-                    "not_empty"
+            [
+                "id" => __CLASS__,
+                "class" => "mb-2",
+                "wrapper-element" => "div",
+                "use_fieldset" => false,
+            ],
+            [
+                "heading" => [
+                    "type" => "text",
+                    "class" => "form-control",
+                    "value" => $comment->heading,
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "text" => [
-                "type" => "textarea",
-                "class" => "form-control",
-                "value" => $comment->text,
-                "validation" => [
-                    "not_empty"
+                "text" => [
+                    "type" => "textarea",
+                    "class" => "form-control",
+                    "value" => $comment->text,
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "tags" => [
-                "label" => "Space separated tags",
-                "type" => "text",
-                "class" => "form-control",
-                "value" => $comment->tags,
-                "validation" => [
-                    "not_empty"
+                "tags" => [
+                    "label" => "Space separated tags",
+                    "type" => "text",
+                    "class" => "form-control",
+                    "value" => $comment->tags,
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "submit" => [
-                "type" => "submit",
-                "value" => "Update comment",
-                "callback" => [$this, "callbackSubmit"],
-                "class" => "btn btn-success"
-            ],
-        ]
-    );
+                "submit" => [
+                    "type" => "submit",
+                    "value" => "Update comment",
+                    "callback" => [$this, "callbackSubmit"],
+                    "class" => "btn btn-success"
+                ],
+            ]
+        );
     }
 
 

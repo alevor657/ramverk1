@@ -21,46 +21,46 @@ class AddCommentForm extends FormModel
         parent::__construct($di);
 
         $this->form->create(
-        [
-            "id" => __CLASS__,
-            "class" => "mb-2",
-            "wrapper-element" => "div",
-            "use_fieldset" => false,
-        ],
-        [
-            "heading" => [
-                "type" => "text",
-                "class" => "form-control",
-                "validation" => [
-                    "not_empty"
+            [
+                "id" => __CLASS__,
+                "class" => "mb-2",
+                "wrapper-element" => "div",
+                "use_fieldset" => false,
+            ],
+            [
+                "heading" => [
+                    "type" => "text",
+                    "class" => "form-control",
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "text" => [
-                "type" => "textarea",
-                "class" => "form-control",
-                "validation" => [
-                    "not_empty"
+                "text" => [
+                    "type" => "textarea",
+                    "class" => "form-control",
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "tags" => [
-                "label" => "Space separated tags",
-                "type" => "text",
-                "class" => "form-control",
-                "validation" => [
-                    "not_empty"
+                "tags" => [
+                    "label" => "Space separated tags",
+                    "type" => "text",
+                    "class" => "form-control",
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "submit" => [
-                "type" => "submit",
-                "value" => "Add post",
-                "callback" => [$this, "callbackSubmit"],
-                "class" => "btn btn-success"
-            ],
-        ]
-    );
+                "submit" => [
+                    "type" => "submit",
+                    "value" => "Add post",
+                    "callback" => [$this, "callbackSubmit"],
+                    "class" => "btn btn-success"
+                ],
+            ]
+        );
     }
 
 

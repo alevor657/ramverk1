@@ -95,6 +95,19 @@ class User extends ActiveRecordModel implements InjectionAwareInterface
 
 
 
+    public function delete($id = null)
+    {
+        $id = $id ?: $this->id;
+
+        $comment = new User();
+        $comment->setDb($this->db);
+        $comment->find("id", $id);
+        $comment->deleted = date("Y-m-d H:i:s");
+        $comment->save();
+    }
+
+
+
     /**
      * Get either a Gravatar URL or complete image tag for a specified email address.
      *

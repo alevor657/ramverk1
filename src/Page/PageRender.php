@@ -22,6 +22,8 @@ class PageRender implements PageRenderInterface, InjectionAwareInterface
      * @param integer $status code to use when delivering the result.
      *
      * @return void
+     *
+     * @SuppressWarnings("exit")
      */
     public function renderPage($data = [], $status = 200)
     {

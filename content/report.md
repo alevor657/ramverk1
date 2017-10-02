@@ -114,3 +114,38 @@ Allmänna kommentare kring din me-sida och dess kodstruktur?
 
 
 Nu blev det mer MVC likt tycker jag. Det finns platser där $app fortfarande används, Routern är helt ombyggd, så jag använder aldrig app, om jag inte missar något. Jag saknar lite docblockkommentarer, men det är lugnt såhär långt tycker jag. Annars så försöker jag mitt bästa att använda allting anax erbjuder, till exempel regioner. Har också fått bort html ifrån md filer. Så det blev bra, tycker jag.
+
+
+##### kmom04 #####
+
+---------------------------------------
+
+###### Till dig som rättar
+
+doe@doe.doe | doe – användare
+
+admin@admin.admin | admin – administratör
+
+
+###### Hur gick det att integrera formulärhantering och databashantering i ditt kommentarssystem?
+
+Det var massa nya saker såsom query builder och Active record design pattern, dessutom så fick vi jobba med HTMLForm. Det tog ett tag för mig för att övertyga mig själv att detta är ett bra sätt att jobba på och att faktiskt fatta hur jobbar man med det nya kodbas. Men jag harlyckats till slut. Dock så har jag några funderingar kring detta. Jag tycker att formulärhantering i sin nuvarande form är lite lurig. Jag fick flytta koden som har med databas att göra till Form’s callback, detta verkar vara lite fel. Det kändes som att detta var modellens ansvar. Jag har inte kommit på något bättre sätt att göra det på. Men annars så gick det bra, det handlade mycket om att läsa Mikaels kod och docstrings innan man faktiskt fattar.
+
+###### Berätta om din syn på Active record och liknande upplägg, ser du fördelar och nackdelar?
+
+
+Ju, det är ganska smidigt att jobba på det sättet. Det är alltid trevligt med en sådan ORM liknande när man får möjligheten att jobba i samma miljö man är van vid. Man kan abstrahera bort MySQL delen. Dock så kan det dyka upp svårigheter om APIet eller föräldrar klasser inte erbjuder det funktionalitet som behövs.
+
+###### Utveckla din syn på koden du nu har i ramverket och din kommentars- och användarkod. Hur känns det?
+
+
+Jag har gått igenom ett tal svårigheter, så att kod kvalitén ökade desto längre fram i uppgiften jag kom och desto mer jag fattade om dessa nya verktygen vi fick jobba med. Så jag har ganska varierande kvalité på koden nu. Men annars så känns det bra att jobba med abstraktioner och bara peka på de metoder som utför nästan allt arbete. Det är smidigt att jobba på det sättet om man vet hur man jobbar det Active record, query builder och HTMLForm. Det enda saken jag skulle dissa (säkert för att jag inte vet hur man gör det rätt) är att modellkoden flyttades till formulärens callback.
+
+###### Om du vill, och har kunskap om, kan du även berätta om din syn på ORM och designmönstret Data Mapper som är närbesläktade med Active Record. Du kanske har erfarenhet av likande upplägg i andra sammanhang?
+
+
+Det enda jag vet om ORM är det vi gick igenom i oopython kursen, jag har jobbat ganska mycket med SQLAlchemy, och jag faktiskt gillade det. Dock så har jag glömt hur man jobbade med sådant upplägg så att jag har inte så mycket att säga om det.
+
+###### Vad tror du om begreppet scaffolding, kan det vara något att kika mer på?
+
+Oja, jag tycker att det är väldigt bra att ha i sitt lilla projekt. Det gör det smidigt att få fram en struktur som kan testar direkt. Scaffolding hjälper till att få färre felkällor och sparar tid, det är ju alltid bra att ha.

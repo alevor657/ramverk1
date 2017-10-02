@@ -21,54 +21,53 @@ class CreateUserForm extends FormModel
         parent::__construct($di);
 
         $this->form->create(
-        [
-            "id" => __CLASS__,
-            "legend" => "Create user",
-            "class" => "center form",
-            "wrapper-element" => "div",
-            "use_fieldset" => false,
-            // "br-after-label" => false,
-        ],
-        [
-            "email" => [
-                "type"        => "email",
-                "validation" => [
-                    "custom_test" => [
-                        "message" => "User with this email is already registered",
-                        "test" => function ($email)
-                        {
-                            $user = new User();
-                            $user->setDb($this->di->get("db"));
-                            $check = $user->find('email', $email);
-                            return !$check;
-                        }
+            [
+                "id" => __CLASS__,
+                "legend" => "Create user",
+                "class" => "center form",
+                "wrapper-element" => "div",
+                "use_fieldset" => false,
+                // "br-after-label" => false,
+            ],
+            [
+                "email" => [
+                    "type"        => "email",
+                    "validation" => [
+                        "custom_test" => [
+                            "message" => "User with this email is already registered",
+                            "test" => function ($email) {
+                                $user = new User();
+                                $user->setDb($this->di->get("db"));
+                                $check = $user->find('email', $email);
+                                return !$check;
+                            }
+                        ],
+                        "not_empty"
+                    ]
+                ],
+
+                "password" => [
+                    "type"        => "password",
+                    "validation" => [
+                        "not_empty"
                     ],
-                    "not_empty"
-                ]
-            ],
-
-            "password" => [
-                "type"        => "password",
-                "validation" => [
-                    "not_empty"
                 ],
-            ],
 
-            "password-again" => [
-                "type"        => "password",
-                "validation" => [
-                    "match" => "password"
+                "password-again" => [
+                    "type"        => "password",
+                    "validation" => [
+                        "match" => "password"
+                    ],
                 ],
-            ],
 
-            "submit" => [
-                "type" => "submit",
-                "value" => "Create user",
-                "callback" => [$this, "callbackSubmit"],
-                "class" => "btn btn-success"
-            ],
-        ]
-    );
+                "submit" => [
+                    "type" => "submit",
+                    "value" => "Create user",
+                    "callback" => [$this, "callbackSubmit"],
+                    "class" => "btn btn-success"
+                ],
+            ]
+        );
     }
 
 
@@ -87,7 +86,7 @@ class CreateUserForm extends FormModel
         $passwordAgain = $this->form->value("password-again");
 
         // Check password matches
-        if ($password !== $passwordAgain ) {
+        if ($password !== $passwordAgain) {
             $this->form->rememberValues();
             $this->form->addOutput("Password did not match.");
             return false;

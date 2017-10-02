@@ -83,7 +83,6 @@ class UserController implements InjectionAwareInterface
         $title      = "A login page";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
-        $response   = $this->di->get("response");
         $form       = new UserLoginForm($this->di);
 
         $form->check();

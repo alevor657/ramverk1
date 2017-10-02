@@ -23,7 +23,7 @@ return [
         [
             // Add routes from bookController and mount on book/
             "mount" => "book",
-            "file" => __DIR__ . "/route/bookController.php",
+            "file" => __DIR__ . "/route2/bookController.php",
         ],
         [
             // Add routes from userController and mount on user/
@@ -33,7 +33,7 @@ return [
         [
             // REM
             "mount" => "api/",
-            "file" => __DIR__ . "/route/remserver.php",
+            "file" => __DIR__ . "/route2/remserver.php",
         ],
         [
             // For debugging and development details on Anax

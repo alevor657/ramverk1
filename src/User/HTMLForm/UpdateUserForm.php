@@ -27,52 +27,52 @@ class UpdateUserForm extends FormModel
         $this->di = $di;
 
         $this->form->create(
-        [
-            "id" => __CLASS__,
-            "class" => "center form",
-            "wrapper-element" => "div",
-            "use_fieldset" => false,
-            // "br-after-label" => false,
-        ],
-        [
-            "email" => [
-                "type" => "email",
-                "value" => esc($this->user->email),
-                "validation" => [
-                //     "custom_test" => [
-                //         "message" => "User with this email is already registered",
-                //         "test" => function ($email)
-                //         {
-                //             $check = $this->user->getUser('email', $email);
-                //             return !$check;
-                //         }
-                //     ],
-                    "not_empty"
-                ]
+            [
+                "id" => __CLASS__,
+                "class" => "center form",
+                "wrapper-element" => "div",
+                "use_fieldset" => false,
+                // "br-after-label" => false,
             ],
-
-            "password" => [
-                "type"        => "password",
-                "validation" => [
-                    "not_empty"
+            [
+                "email" => [
+                    "type" => "email",
+                    "value" => esc($this->user->email),
+                    "validation" => [
+                    //     "custom_test" => [
+                    //         "message" => "User with this email is already registered",
+                    //         "test" => function ($email)
+                    //         {
+                    //             $check = $this->user->getUser('email', $email);
+                    //             return !$check;
+                    //         }
+                    //     ],
+                        "not_empty"
+                    ]
                 ],
-            ],
 
-            "password-again" => [
-                "type"        => "password",
-                "validation" => [
-                    "match" => "password"
+                "password" => [
+                    "type"        => "password",
+                    "validation" => [
+                        "not_empty"
+                    ],
                 ],
-            ],
 
-            "submit" => [
-                "type" => "submit",
-                "value" => "Update User",
-                "callback" => [$this, "callbackSubmit"],
-                "class" => "btn btn-warning"
-            ],
-        ]
-    );
+                "password-again" => [
+                    "type"        => "password",
+                    "validation" => [
+                        "match" => "password"
+                    ],
+                ],
+
+                "submit" => [
+                    "type" => "submit",
+                    "value" => "Update User",
+                    "callback" => [$this, "callbackSubmit"],
+                    "class" => "btn btn-warning"
+                ],
+            ]
+        );
     }
 
 
@@ -101,7 +101,7 @@ class UpdateUserForm extends FormModel
         $passwordAgain = $this->form->value("password-again");
 
         // Check password matches
-        if ($password !== $passwordAgain ) {
+        if ($password !== $passwordAgain) {
             $this->form->rememberValues();
             $this->form->addOutput("Password did not match.");
             return false;

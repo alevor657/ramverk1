@@ -65,8 +65,10 @@ class UpdateForm extends FormModel
      * Get details on item to load form with.
      *
      * @param integer $id get details on item with id.
-     * 
+     *
      * @return boolean true if okey, false if something went wrong.
+     *
+     * @SuppressWarnings(PHPMD)
      */
     public function getItemDetails($id)
     {
