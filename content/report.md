@@ -149,3 +149,32 @@ Det enda jag vet om ORM är det vi gick igenom i oopython kursen, jag har jobbat
 ###### Vad tror du om begreppet scaffolding, kan det vara något att kika mer på?
 
 Oja, jag tycker att det är väldigt bra att ha i sitt lilla projekt. Det gör det smidigt att få fram en struktur som kan testar direkt. Scaffolding hjälper till att få färre felkällor och sparar tid, det är ju alltid bra att ha.
+
+
+##### kmom04 #####
+
+---------------------------------------
+
+###### Hur gick arbetet med att lyfta ut koden ur me-sidan och placera i en egen modul?
+
+
+Det gick nästan smärtfritt. Det krånglade med modulnamnet i början, och det var för att jag inte ändrade i den scaffoldade composer.json filen. Det var ett par små bekymmer men gick utan problem annars. Det blev inte så modulärt som jag ville ha det men jag valde att hålla det enkelt och endast skapa en enda modul som innehåller nästan all min kod. Så det blev en klump, ja.
+
+###### Flöt det på bra med GitHub och kopplingen till Packagist?
+
+
+Det gick absolut utan problem. Det var väldigt tydligt förklarat i artikeln, så det tog typ 15 minuter att göra det. Det var enklare för mig att lösa uppgiften för att jag jobbar i Unix miljö, så allting blir lite enklare för mig.
+
+###### Hur gick det att åter installera modulen i din me-sida med composer, kunde du följa du din installationsmanual?
+
+
+Jag har testat min manual och den borde fungera bra. Observera att du inte kan köra tester om du inte dumpar in min databas. Dumpfilen ligger under sql mappen. För min anax så handlade det bara om att installera och så fungerade allting direkt.
+
+###### Hur väl lyckas du enhetstesta din modul och hur mycket kodtäckning fick du med?
+
+
+Jag har fått ungefär 10% kodtäckning. Jag lämnar denna delen till kmom06, annars så hinner jag inte att jobba med indproj. Men det blev lite googling och ett par frågor i chatten för mig. Problemet var att min lokala php installation hade inte PDO modulen med. Det tog lite tid innan jag fattade. Fick hjälp i chatten av Irc. Hade också problem med dsn strängen, fick ändra localhost till 127.0.0.1.
+
+###### Några reflektioner över skillnaden med och utan modul?
+
+Det är absolut ingen skillnad utifrån min anax installation. Allting ser likadant ut. Det blev mer fördelat och strukturen har blivit bättre. Nu ser jag möjligheten att fördela arbetet, man kan bara distribuera arbetet mellan olika medarbetare, varje av de kan nu jobba med sin egen lilla del, ha en egen repo, testa och så. På detta sättet det blev bättre. Dessutom så är det möjligt att hämta hem modulen med ett enda kommando.
