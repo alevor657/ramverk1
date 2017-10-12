@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a39fe06a88bf2eea3446efc0e82dd02d",
+    "content-hash": "709f185ea3938fdb54acd49baaaf0869",
     "packages": [
+        {
+            "name": "alvo/comment",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alevor657/alvo-comment.git",
+                "reference": "1cf209c3765f6b2ed9ed9dcd914bd35abd2e4ba2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alevor657/alvo-comment/zipball/1cf209c3765f6b2ed9ed9dcd914bd35abd2e4ba2",
+                "reference": "1cf209c3765f6b2ed9ed9dcd914bd35abd2e4ba2",
+                "shasum": ""
+            },
+            "require": {
+                "anax/configure": "^1.0",
+                "anax/database": "^1.1",
+                "anax/di": "^1.0",
+                "anax/htmlform": "^1.0",
+                "anax/page": "^1.0",
+                "anax/request": "^1.0",
+                "anax/response": "^1.0",
+                "anax/router": "^1.0",
+                "anax/session": "^1.0",
+                "anax/textfilter": "^1.0",
+                "anax/url": "^1.0",
+                "anax/view": "^1.0",
+                "mos/cimage": "^0.7.19",
+                "php": ">=7.0",
+                "symfony/yaml": "^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/",
+                    "Alvo\\": "src/"
+                },
+                "files": [
+                    "config/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey V",
+                    "email": "alevor657@gmail.com",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax comment module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2017-10-12T12:45:20+00:00"
+        },
         {
             "name": "anax/common",
             "version": "v1.0.19",
