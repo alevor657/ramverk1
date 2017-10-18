@@ -151,7 +151,7 @@ Det enda jag vet om ORM är det vi gick igenom i oopython kursen, jag har jobbat
 Oja, jag tycker att det är väldigt bra att ha i sitt lilla projekt. Det gör det smidigt att få fram en struktur som kan testar direkt. Scaffolding hjälper till att få färre felkällor och sparar tid, det är ju alltid bra att ha.
 
 
-##### kmom04 #####
+##### kmom05 #####
 
 ---------------------------------------
 
@@ -178,3 +178,31 @@ Jag har fått ungefär 10% kodtäckning. Jag lämnar denna delen till kmom06, an
 ###### Några reflektioner över skillnaden med och utan modul?
 
 Det är absolut ingen skillnad utifrån min anax installation. Allting ser likadant ut. Det blev mer fördelat och strukturen har blivit bättre. Nu ser jag möjligheten att fördela arbetet, man kan bara distribuera arbetet mellan olika medarbetare, varje av de kan nu jobba med sin egen lilla del, ha en egen repo, testa och så. På detta sättet det blev bättre. Dessutom så är det möjligt att hämta hem modulen med ett enda kommando.
+
+
+##### kmom06 #####
+
+---------------------------------------
+
+###### Har du någon erfarenhet av automatiserade testar och CI sedan tidigare?
+
+Nej, det har jag inte. Jag har alldrig hört talas om sådant.
+
+
+###### Hur ser du på begreppen, bra, onödigt, nödvändigt, tidskrävande?
+
+Är det ett stort projekt man jobbar i då är det väldigt bra att ha. Det underlättar för kommunikation i teamet och gör utvecklingsprocessen enklare och smidigare. Det är väldigt trevligt med statisk kodanalys, tycker jag. Gåt något åt skogen så ser man det direkt.
+
+
+###### Hur stor kodtäckning lyckades du uppnå i din modul?
+
+Jag har gått upp till 42% kodtäckning. Det var främst controllers som är svårtestade. Dels så var det för att min modul innehåller page render classer. Dessa har jag inte testat. Men Comment och User har ganska bra täckning, speciellt Comment.
+
+###### Berätta hur det gick att integrera mot de olika externa tjänsterna?
+
+Det gick rätt fort för mig. Det var bara att logga in med github, och så är det klart. Jag har börjat med CircleCI, men de använder inte php7, så jag hoppade över till TravisCI. Min badge för scrutinizer code coverage visas inte rätt på github repot, men om man klickar på den så ser man det av någon anledning. Cache problem borde det vara.
+
+
+###### Vilken extern tjänst uppskattade du mest, eller har du förslag på ytterligare externa tjänster att använda?
+
+Scrutinizer. Det är säkert en vinnare över de andra för att den har statisk kodanalys inte bara i form av phpcs och phpmd.
